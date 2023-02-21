@@ -3,7 +3,6 @@
 #include "Window.h"
 #include "WindowClass.h"
 #include "Application.h"
-#include <fstream>
 
 gm::Window::Window(const std::wstring& title)
 	: mTitle{ title }
@@ -36,21 +35,11 @@ BOOL gm::Window::Initialize(const gm::Application* pApplication, int nCmdShow, c
 		hModule,
 		(LPVOID)pApplication
 	);
-	DWORD err{ GetLastError() };
 	if (!mhWnd)
-	{
-		std::ofstream errfile("error.log");
-		if (errfile.is_open())
-		{
-			errfile << "Window creation error: " << err << std::endl;
-			errfile.close();
-		}
 		return FALSE;
-	}
 
 	BOOL darkMode{ TRUE };
 	DwmSetWindowAttribute(mhWnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &darkMode, sizeof(darkMode));
-	//DwmSetWindowAttribute(mhWnd, 20, &darkMode, sizeof(darkMode));
 	//COLORREF colorBorder{ GetSysColor(COLOR_HIGHLIGHT) };
 	COLORREF colorCaption{ GetSysColor(COLOR_WINDOWTEXT) };
 	COLORREF colorText{ GetSysColor(COLOR_WINDOW) };
