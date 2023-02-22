@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Application.h"
 #include "WindowClass.h"
+#include "Cylinder.h"
 
 gm::Application::Application(int nCmdShow)
 	: mpWindowClass{ nullptr }
@@ -13,6 +14,8 @@ gm::Application::Application(int nCmdShow)
 	mWindow.SetFactory(mpD2DFactory);
 	mWindow.CreateRenderTarget();
 	mWindow.CreateSolidColorBrush();
+
+	mMeshesPtr.emplace_back(std::make_shared<gm::Cylinder<float, 12>>(100.f, 300.f));
 }
 
 gm::Application::~Application()
@@ -44,8 +47,9 @@ void gm::Application::OnRender()
 	pRenderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
 	pRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::Black));
 
-	pRenderTarget->DrawLine({ 320.f, 240.f }, { 960.f, 720.f }, pSolidColorBrush, 1.0f);
-
+	for (auto& meshPtr : mMeshesPtr)
+		meshPtr->Render(pRenderTarget, pSolidColorBrush);
+	
 	pRenderTarget->EndDraw();
 }
 

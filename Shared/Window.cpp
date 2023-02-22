@@ -1,5 +1,4 @@
 #include "pch.h"
-#include <dwmapi.h>
 #include "Window.h"
 #include "WindowClass.h"
 #include "Application.h"

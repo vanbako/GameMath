@@ -9,6 +9,7 @@
 #define OEMRESOURCE
 
 #include <windows.h>
+#include <dwmapi.h>
 #include <d2d1.h>
 
 template<class T>
@@ -20,3 +21,11 @@ void SafeRelease(T** ppT)
         *ppT = nullptr;
     }
 }
+
+#include <concepts>
+#include <memory>
+#include <string>
+#include <array>
+#include <vector>
+#include <numbers>
+#include <cmath>
