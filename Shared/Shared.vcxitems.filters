@@ -4,34 +4,16 @@
     <Filter Include="pch">
       <UniqueIdentifier>{b5faa9fb-9120-4ddc-b771-23adb3293244}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Window">
-      <UniqueIdentifier>{709c9ef1-20e7-4e46-b07d-170905716d56}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wWinMain.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)pch.cpp">
       <Filter>pch</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Window.cpp">
-      <Filter>Window</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)WindowClass.cpp">
-      <Filter>Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)pch.h">
       <Filter>pch</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Window.h">
-      <Filter>Window</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WindowClass.h">
-      <Filter>Window</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Application.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Mesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Concepts.h" />
   </ItemGroup>
 </Project>
