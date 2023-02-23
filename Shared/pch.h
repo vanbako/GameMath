@@ -11,6 +11,7 @@
 #include <windows.h>
 #include <dwmapi.h>
 #include <d2d1.h>
+#include <timeapi.h>
 
 template<class T>
 void SafeRelease(T** ppT)
@@ -29,3 +30,4 @@ void SafeRelease(T** ppT)
 #include <vector>
 #include <numbers>
 #include <cmath>
+#include <thread>

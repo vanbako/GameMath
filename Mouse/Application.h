@@ -14,6 +14,7 @@ namespace gm
 		~Application();
 		gm::WindowClass* GetWindowClass() const;
 		gm::Window* GetWindow();
+		void Input(double nanos);
 		void OnRender();
 		void OnResize(UINT width, UINT height);
 	private:

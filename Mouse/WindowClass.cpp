@@ -19,12 +19,12 @@ LRESULT CALLBACK gm::WindowClass::WndProc(HWND hWnd, UINT message, WPARAM wParam
 			case WM_SIZE:
 				pApplication->OnResize(LOWORD(lParam), HIWORD(lParam));
 				break;
-			case WM_MOUSEMOVE:
-				InvalidateRect(hWnd, NULL, FALSE);
-				break;
-			case WM_PAINT:
-				pApplication->OnRender();
-				break;
+			//case WM_MOUSEMOVE:
+			//	InvalidateRect(hWnd, NULL, FALSE);
+			//	break;
+			//case WM_PAINT:
+			//	pApplication->OnRender();
+			//	break;
 			case WM_DESTROY:
 				PostQuitMessage(0);
 				break;

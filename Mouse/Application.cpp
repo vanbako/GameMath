@@ -35,6 +35,11 @@ gm::Window* gm::Application::GetWindow()
 	return &mWindow;
 }
 
+void gm::Application::Input(double nanos)
+{
+
+}
+
 void gm::Application::OnRender()
 {
 	ID2D1HwndRenderTarget* pRenderTarget{ mWindow.GetRenderTarget() };
@@ -59,4 +64,5 @@ void gm::Application::OnResize(UINT width, UINT height)
 	ID2D1HwndRenderTarget* pRenderTarget{ mWindow.GetRenderTarget() };
 	if (pRenderTarget != nullptr)
 		pRenderTarget->Resize(D2D1::SizeU(width, height));
+	OnRender();
 }
