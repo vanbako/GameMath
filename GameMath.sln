@@ -9,7 +9,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shared", "Shared\Shared.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02Ortho", "Ortho\Ortho.vcxproj", "{A6478411-152C-4247-B5B8-12287DDE2586}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03OrthoSRT", "OrthoSRT\OrthoSRT.vcxproj", "{6FD4DAFD-FCE0-4630-B924-4A09FC188D75}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03ObjectToWorld", "OrthoSRT\OrthoSRT.vcxproj", "{6FD4DAFD-FCE0-4630-B924-4A09FC188D75}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04Mouse", "Mouse\Mouse.vcxproj", "{41334E71-FA0B-4C62-B8B1-362D22942504}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,14 @@ Global
 		{6FD4DAFD-FCE0-4630-B924-4A09FC188D75}.Release|x64.Build.0 = Release|x64
 		{6FD4DAFD-FCE0-4630-B924-4A09FC188D75}.Release|x86.ActiveCfg = Release|Win32
 		{6FD4DAFD-FCE0-4630-B924-4A09FC188D75}.Release|x86.Build.0 = Release|Win32
+		{41334E71-FA0B-4C62-B8B1-362D22942504}.Debug|x64.ActiveCfg = Debug|x64
+		{41334E71-FA0B-4C62-B8B1-362D22942504}.Debug|x64.Build.0 = Debug|x64
+		{41334E71-FA0B-4C62-B8B1-362D22942504}.Debug|x86.ActiveCfg = Debug|Win32
+		{41334E71-FA0B-4C62-B8B1-362D22942504}.Debug|x86.Build.0 = Debug|Win32
+		{41334E71-FA0B-4C62-B8B1-362D22942504}.Release|x64.ActiveCfg = Release|x64
+		{41334E71-FA0B-4C62-B8B1-362D22942504}.Release|x64.Build.0 = Release|x64
+		{41334E71-FA0B-4C62-B8B1-362D22942504}.Release|x86.ActiveCfg = Release|Win32
+		{41334E71-FA0B-4C62-B8B1-362D22942504}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +62,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Shared\Shared.vcxitems*{183e1249-4696-4d53-8bc0-00ec722ff6e6}*SharedItemsImports = 4
+		Shared\Shared.vcxitems*{41334e71-fa0b-4c62-b8b1-362d22942504}*SharedItemsImports = 4
 		Shared\Shared.vcxitems*{6fd4dafd-fce0-4630-b924-4a09fc188d75}*SharedItemsImports = 4
 		Shared\Shared.vcxitems*{a6478411-152c-4247-b5b8-12287dde2586}*SharedItemsImports = 4
 		Shared\Shared.vcxitems*{b1ab3c31-59c5-4218-b0a6-b6993c649b8e}*SharedItemsImports = 9
