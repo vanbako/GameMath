@@ -33,6 +33,7 @@
     <ProjectGuid>{489c1617-6004-4a3f-950e-18c13bc60f58}</ProjectGuid>
     <RootNamespace>Perspective</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>05Perspective</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

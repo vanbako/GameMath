@@ -45,35 +45,22 @@ namespace gm
 			if (mHasMoved)
 			{
 				mHasMoved = false;
-				T c{}, s{};
-				std::array<T, 16> r{};
 				std::memcpy((void*)mObjectToWorldMatrix.data(), (void*)mIdentityMatrix.data(), 16 * sizeof(T));
 				mObjectToWorldMatrix[0] = mScale;
 				mObjectToWorldMatrix[5] = mScale;
 				mObjectToWorldMatrix[10] = mScale;
-				c = std::cos(mRotation[0]);
-				s = std::sin(mRotation[0]);
-				r = std::array<T, 16>{
-					1., 0., 0., 0.,
-						0., c, -s, 0.,
-						0., s, c, 0.,
-						0., 0., 0., 1. };
-				mObjectToWorldMatrix = MatrixMultiply(r, mObjectToWorldMatrix);
-				c = std::cos(mRotation[1]);
-				s = std::sin(mRotation[1]);
-				r = std::array<T, 16>{
-					c, 0., s, 0.,
-						0., 1., 0., 0.,
-						-s, 0., c, 0.,
-						0., 0., 0., 1. };
-				mObjectToWorldMatrix = MatrixMultiply(r, mObjectToWorldMatrix);
-				c = std::cos(mRotation[2]);
-				s = std::sin(mRotation[2]);
-				r = std::array<T, 16>{
-					c, -s, 0., 0.,
-						s, c, 0., 0.,
-						0., 0., 1., 0.,
-						0., 0., 0., 1. };
+				T
+					cx{ std::cos(mRotation[2]) },
+					sx{ std::sin(mRotation[2]) },
+					cy{ std::cos(mRotation[1]) },
+					sy{ std::sin(mRotation[1]) },
+					cz{ std::cos(mRotation[0]) },
+					sz{ std::sin(mRotation[0]) };
+				std::array<T, 16> r{
+					cx * cy, cx * sy * sz - sx * cz, cx * sy * cz + sx * sz, 0.,
+					sx * cy, sx * sy * sz + cx * cz, sx * sy * cz - cx * sz, 0.,
+					-sy,     cy * sz,                cy * cz,                0.,
+					0.,      0.,                     0.,                     1. };
 				mObjectToWorldMatrix = MatrixMultiply(r, mObjectToWorldMatrix);
 				std::memcpy((void*)r.data(), (void*)mIdentityMatrix.data(), 16 * sizeof(T));
 				r[3] = mTranslation[0];

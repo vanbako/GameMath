@@ -35,7 +35,7 @@ LRESULT CALLBACK gm::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 
 gm::Application::Application(const int nCmdShow)
 	: mpWindowClass{ nullptr }
-	, mWindow{ L"GameMath 04: Perspective" }
+	, mWindow{ L"GameMath 05: Perspective" }
 	, mpD2DFactory{ nullptr }
 	, mMeshesPtr{}
 	, mKeyboard{}
@@ -50,7 +50,7 @@ gm::Application::Application(const int nCmdShow)
 	mWindow.CreateRenderTarget();
 	mWindow.CreateSolidColorBrush();
 
-	mMeshesPtr.emplace_back(std::make_shared<gm::Cylinder<float, 11>>(100.f, 300.f));
+	mMeshesPtr.emplace_back(std::make_shared<gm::Cylinder<float, 12>>(100.f, 300.f));
 }
 
 gm::Application::~Application()

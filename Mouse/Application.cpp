@@ -50,7 +50,7 @@ gm::Application::Application(int nCmdShow)
 	mWindow.CreateRenderTarget();
 	mWindow.CreateSolidColorBrush();
 
-	mMeshesPtr.emplace_back(std::make_shared<gm::Cylinder<float, 11>>(100.f, 300.f));
+	mMeshesPtr.emplace_back(std::make_shared<gm::Cylinder<float, 12>>(100.f, 300.f));
 }
 
 gm::Application::~Application()
