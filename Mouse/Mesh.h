@@ -1,5 +1,6 @@
 #pragma once
 #include "Concepts.h"
+#include "MouseButton.h"
 
 namespace gm
 {
@@ -12,13 +13,33 @@ namespace gm
 			, mTriangles{}
 			, mScale{ .5f }
 			, mTranslation{ 0., 0., 0. }
-			, mRotation{ 0., 0., std::numbers::pi_v<T> / T(4.) }
+			, mRotation{ 0., 0., 0. }
 			, mHasMoved{ true }
 			, mTransformedVertices{}
 			, mObjectToWorldMatrix{}
 		{}
 		virtual ~Mesh() = default;
 
+		virtual void Move(const T duration, const gm::MouseButton mouseButton, const POINT& pos)
+		{
+			switch (mouseButton)
+			{
+			case gm::MouseButton::Left:
+				mTranslation[0] -= T(pos.x);
+				mTranslation[1] += T(pos.y);
+				mHasMoved = true;
+				break;
+			case gm::MouseButton::Right:
+				mRotation[0] -= T(pos.y) / T(180.);
+				mRotation[1] += T(pos.x) / T(180.);
+				mHasMoved = true;
+				break;
+			case gm::MouseButton::Middle:
+				mRotation[2] += T(pos.x) / T(180.);
+				mHasMoved = true;
+				break;
+			}
+		}
 		virtual void Render(ID2D1HwndRenderTarget* pRenderTarget, ID2D1SolidColorBrush* pSolidColorBrush)
 		{
 			if (mHasMoved)

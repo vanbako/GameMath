@@ -13,6 +13,7 @@ namespace gm
 		gm::Window* GetWindow();
 		void OnRender();
 		void OnResize(UINT width, UINT height);
+		void Input(double duration);
 	private:
 		gm::WindowClass* mpWindowClass;
 		gm::Window mWindow;

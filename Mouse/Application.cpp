@@ -2,12 +2,17 @@
 #include "Application.h"
 #include "WindowClass.h"
 #include "Cylinder.h"
+#include "MouseButton.h"
 
 gm::Application::Application(int nCmdShow)
 	: mpWindowClass{ nullptr }
-	, mWindow{ L"GameMath 01: Line" }
+	, mWindow{ L"GameMath 01: Mouse" }
 	, mpD2DFactory{ nullptr }
 	, mMeshesPtr{}
+	, mKeyboard{}
+	, mShowCursor{ true }
+	, mCursorMode{ gm::CursorMode::Absolute }
+	, mSaveCursorPos{}
 {
 	mpWindowClass = new gm::WindowClass{ L"GameMath" };
 	mWindow.Initialize(this, nCmdShow);
@@ -35,12 +40,72 @@ gm::Window* gm::Application::GetWindow()
 	return &mWindow;
 }
 
-void gm::Application::Input(double nanos)
+int gm::Application::Run()
 {
-
+	MSG msg{};
+	bool doesEnd{ false };
+	timeBeginPeriod(1);
+	std::chrono::steady_clock::time_point start{};
+	std::chrono::duration<double, std::nano> endMinusStart{}, frameDuration{ 10000000. };
+	while (!doesEnd)
+	{
+		start = std::chrono::steady_clock::now();
+		while (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+		{
+			if (msg.message == WM_QUIT)
+				doesEnd = true;
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		Input(frameDuration.count());
+		Render();
+		endMinusStart = std::chrono::steady_clock::now() - start;
+		if (frameDuration.count() - endMinusStart.count() > 0)
+			std::this_thread::sleep_for(frameDuration - endMinusStart);
+	}
+	timeEndPeriod(1);
+	return (int)msg.wParam;
 }
 
-void gm::Application::OnRender()
+void gm::Application::Input(double duration)
+{
+	GetKeyboardState(mKeyboard);
+	gm::MouseButton mouseButton{ gm::MouseButton::Sentinel };
+	bool showCursor{ true };
+	if ((mKeyboard[VK_LBUTTON] & 0x80) == 0x80)
+	{
+		mouseButton = gm::MouseButton::Left;
+		showCursor = false;
+	}
+	if ((mKeyboard[VK_MBUTTON] & 0x80) == 0x80)
+	{
+		mouseButton = gm::MouseButton::Middle;
+		showCursor = false;
+	}
+	if ((mKeyboard[VK_RBUTTON] & 0x80) == 0x80)
+	{
+		mouseButton = gm::MouseButton::Right;
+		showCursor = false;
+	}
+	if (showCursor && !mShowCursor)
+	{
+		mCursorMode = gm::CursorMode::Absolute;
+		mShowCursor = true;
+		ShowCursor(TRUE);
+	}
+	if (!showCursor && mShowCursor)
+	{
+		mCursorMode = gm::CursorMode::Relative;
+		mShowCursor = false;
+		while (ShowCursor(FALSE) > 0);
+	}
+	mCursorPos = GetCursor();
+	if (mCursorMode == gm::CursorMode::Relative)
+		for (auto meshPtr : mMeshesPtr)
+			meshPtr->Move(float(duration), mouseButton, mCursorPos);
+}
+
+void gm::Application::Render()
 {
 	ID2D1HwndRenderTarget* pRenderTarget{ mWindow.GetRenderTarget() };
 	if (pRenderTarget == nullptr)
@@ -64,5 +129,21 @@ void gm::Application::OnResize(UINT width, UINT height)
 	ID2D1HwndRenderTarget* pRenderTarget{ mWindow.GetRenderTarget() };
 	if (pRenderTarget != nullptr)
 		pRenderTarget->Resize(D2D1::SizeU(width, height));
-	OnRender();
+	Render();
+}
+
+POINT gm::Application::GetCursor()
+{
+	POINT pos{};
+	GetCursorPos(&pos);
+	if (mCursorMode == gm::CursorMode::Relative)
+	{
+		POINT savePos{ mSaveCursorPos };
+		SetCursorPos(savePos.x, savePos.y);
+		pos.x = savePos.x - pos.x;
+		pos.y = savePos.y - pos.y;
+	}
+	else
+		mSaveCursorPos = pos;
+	return pos;
 }

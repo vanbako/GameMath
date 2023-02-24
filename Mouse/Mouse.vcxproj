@@ -26,8 +26,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="CursorMode.h" />
     <ClInclude Include="Cylinder.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MouseButton.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowClass.h" />
   </ItemGroup>
