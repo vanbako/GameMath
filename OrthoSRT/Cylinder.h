@@ -35,7 +35,7 @@ namespace gm
 				Mesh<T>::mVertices.emplace_back(std::array<T, 4>{ x, 0., z, 1. });
 				Mesh<T>::mVertices.emplace_back(std::array<T, 4>{ x, mHeight, z, 1. });
 				Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ 0, oldBottom, newBottom });
-				Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ 0, oldTop, newTop });
+				Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ 1, oldTop, newTop });
 				Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ oldBottom, newBottom, oldTop });
 				Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ oldTop, newBottom, newTop });
 				oldBottom += 2;
@@ -44,7 +44,7 @@ namespace gm
 				newTop += 2;
 			}
 			Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ 0, oldBottom, 2 });
-			Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ 0, oldTop, 3 });
+			Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ 1, oldTop, 3 });
 			Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ oldBottom, 2, oldTop });
 			Mesh<T>::mTriangles.emplace_back(std::array<size_t, 3>{ oldTop, 2, 3 });
 		}

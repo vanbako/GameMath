@@ -4,6 +4,9 @@
     <Filter Include="pch">
       <UniqueIdentifier>{b5faa9fb-9120-4ddc-b771-23adb3293244}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enums">
+      <UniqueIdentifier>{d76bb682-f3ea-4208-9cff-2a74cf882e70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)pch.cpp">
@@ -15,5 +18,11 @@
       <Filter>pch</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Concepts.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CursorMode.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MouseButton.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

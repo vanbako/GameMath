@@ -23,6 +23,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Concepts.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CursorMode.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MouseButton.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
   </ItemGroup>
 </Project>
