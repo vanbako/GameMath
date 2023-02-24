@@ -20,16 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Window.cpp" />
-    <ClCompile Include="WindowClass.cpp" />
     <ClCompile Include="wWinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Cylinder.h" />
     <ClInclude Include="Mesh.h" />
-    <ClInclude Include="Window.h" />
-    <ClInclude Include="WindowClass.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

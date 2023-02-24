@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "Window.h"
-#include "WindowClass.h"
-#include "Application.h"
 
 gm::Window::Window(const std::wstring& title)
 	: mTitle{ title }
@@ -18,11 +16,11 @@ gm::Window::~Window()
 	SafeRelease(&mpRenderTarget);
 }
 
-BOOL gm::Window::Initialize(const gm::Application* pApplication, int nCmdShow, const int width, const int height)
+BOOL gm::Window::Initialize(const gm::Application* pApplication, const std::wstring& className, const int nCmdShow, const int width, const int height)
 {
 	HMODULE hModule{ GetModuleHandle(nullptr) };
 	mhWnd = CreateWindowW(
-		pApplication->GetWindowClass()->GetClassName().c_str(),
+		className.c_str(),
 		mTitle.c_str(),
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,

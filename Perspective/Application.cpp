@@ -33,9 +33,9 @@ LRESULT CALLBACK gm::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 	return DefWindowProc(hWnd, message, wParam, lParam);
 }
 
-gm::Application::Application(int nCmdShow)
+gm::Application::Application(const int nCmdShow)
 	: mpWindowClass{ nullptr }
-	, mWindow{ L"GameMath 04: Mouse" }
+	, mWindow{ L"GameMath 04: Perspective" }
 	, mpD2DFactory{ nullptr }
 	, mMeshesPtr{}
 	, mKeyboard{}
@@ -91,7 +91,7 @@ int gm::Application::Run()
 	return (int)msg.wParam;
 }
 
-void gm::Application::Input(double duration)
+void gm::Application::Input(const double duration)
 {
 	GetKeyboardState(mKeyboard);
 	gm::MouseButton mouseButton{ gm::MouseButton::Sentinel };
@@ -148,7 +148,7 @@ void gm::Application::Render()
 	pRenderTarget->EndDraw();
 }
 
-void gm::Application::OnResize(UINT width, UINT height)
+void gm::Application::OnResize(const UINT width, const UINT height)
 {
 	ID2D1HwndRenderTarget* pRenderTarget{ mWindow.GetRenderTarget() };
 	if (pRenderTarget != nullptr)

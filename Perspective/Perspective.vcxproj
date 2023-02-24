@@ -30,10 +30,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{41334e71-fa0b-4c62-b8b1-362d22942504}</ProjectGuid>
-    <RootNamespace>Mouse</RootNamespace>
+    <ProjectGuid>{489c1617-6004-4a3f-950e-18c13bc60f58}</ProjectGuid>
+    <RootNamespace>Perspective</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>04Mouse</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

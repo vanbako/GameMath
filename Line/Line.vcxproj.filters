@@ -9,9 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Window">
-      <UniqueIdentifier>{3df58670-8504-4923-96fd-b73ff49b0c03}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -20,22 +17,10 @@
     <ClCompile Include="wWinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Window</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowClass.cpp">
-      <Filter>Window</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Window</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowClass.h">
-      <Filter>Window</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

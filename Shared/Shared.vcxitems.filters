@@ -7,10 +7,19 @@
     <Filter Include="Enums">
       <UniqueIdentifier>{d76bb682-f3ea-4208-9cff-2a74cf882e70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{5fed9364-dedc-494b-a445-bebe83fb1e11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)pch.cpp">
       <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Window.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WindowClass.cpp">
+      <Filter>Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -23,6 +32,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)MouseButton.h">
       <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Window.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WindowClass.h">
+      <Filter>Window</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

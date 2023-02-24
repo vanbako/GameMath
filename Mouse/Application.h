@@ -1,4 +1,5 @@
 #pragma once
+#include "WindowClass.h"
 #include "Window.h"
 #include "Concepts.h"
 #include "CursorMode.h"
@@ -32,5 +33,7 @@ namespace gm
 			mSaveCursorPos;
 
 		POINT GetCursor();
+
+		static const std::wstring mClassName;
 	};
 }

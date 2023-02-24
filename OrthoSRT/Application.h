@@ -1,4 +1,5 @@
 #pragma once
+#include "WindowClass.h"
 #include "Window.h"
 #include "Concepts.h"
 
@@ -12,7 +13,6 @@ namespace gm
 	public:
 		explicit Application(int nCmdShow);
 		~Application();
-		gm::WindowClass* GetWindowClass() const;
 		gm::Window* GetWindow();
 		void OnRender();
 		void OnResize(UINT width, UINT height);
@@ -21,5 +21,7 @@ namespace gm
 		gm::Window mWindow;
 		ID2D1Factory* mpD2DFactory;
 		std::vector<std::shared_ptr<gm::Mesh<float>>> mMeshesPtr;
+
+		static const std::wstring mClassName;
 	};
 }

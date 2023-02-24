@@ -2,7 +2,6 @@
 
 namespace gm
 {
-	class WindowClass;
 	class Application;
 
 	class Window final
@@ -10,7 +9,7 @@ namespace gm
 	public:
 		explicit Window(const std::wstring& title);
 		~Window();
-		BOOL Initialize([[maybe_unused]] const gm::Application* pApplication, int nCmdShow, const int width = 1280, const int height = 960);
+		BOOL Initialize([[maybe_unused]] const gm::Application* pApplication, const std::wstring& className, const int nCmdShow, const int width = 1280, const int height = 960);
 		void SetFactory(ID2D1Factory* pD2DFactory);
 		HRESULT CreateRenderTarget();
 		HRESULT CreateSolidColorBrush(D2D1::ColorF color = D2D1::ColorF::White);
