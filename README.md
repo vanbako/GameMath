@@ -21,7 +21,27 @@ GameMath is a collection of small C++ projects that introduce mathematics and gr
 
 ## Building
 
-The projects are intended for Windows and require Visual Studio 2022 or later. Open `GameMath.sln` and build the desired example. Some early projects also include `CMakeLists.txt` for alternative builds.
+Every example directory contains a `CMakeLists.txt` file and the repository root
+provides one that builds all of them. On Windows you can generate Visual Studio
+solutions:
+
+```powershell
+mkdir build
+cmake -S . -B build -G "Visual Studio 17 2022"
+cmake --build build --target 01Line
+```
+
+On Linux a build directory can be generated for `g++` in a similar way:
+
+```bash
+mkdir build
+cmake -S . -B build
+cmake --build build --target 01Line
+```
+
+The examples depend on Windows specific APIs such as Win32 and DirectX, so a
+successful build currently requires a Windows environment or a compatible
+emulation layer.
 
 ## License
 

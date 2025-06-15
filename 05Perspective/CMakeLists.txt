@@ -1,22 +1,15 @@
 cmake_minimum_required(VERSION 3.15)
-project(01Line VERSION 1.0)
+project(05Perspective VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(SOURCE_FILES
-    Application.cpp
-    Window.cpp
-    WindowClass.cpp
-    wWinMain.cpp
+file(GLOB SOURCE_FILES CONFIGURE_DEPENDS
+    *.cpp
 )
-
-set(HEADER_FILES
-    Application.h
-    pch.h
-    Window.h
-    WindowClass.h
+file(GLOB HEADER_FILES CONFIGURE_DEPENDS
+    *.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
@@ -33,14 +26,13 @@ else()
     target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE UNICODE _UNICODE)
-
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-
 if(WIN32)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE UNICODE _UNICODE)
     target_link_libraries(${PROJECT_NAME}
         dwmapi
         d2d1
         winmm
     )
 endif()
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
