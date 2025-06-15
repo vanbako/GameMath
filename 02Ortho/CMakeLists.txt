@@ -5,14 +5,19 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-file(GLOB SOURCE_FILES CONFIGURE_DEPENDS
-    *.cpp
-)
-file(GLOB HEADER_FILES CONFIGURE_DEPENDS
-    *.h
-)
-
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
+if(WIN32)
+    file(GLOB SOURCE_FILES CONFIGURE_DEPENDS
+        *.cpp
+    )
+    file(GLOB HEADER_FILES CONFIGURE_DEPENDS
+        *.h
+    )
+    add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
+else()
+    find_package(SDL2 REQUIRED)
+    add_executable(${PROJECT_NAME} wWinMain.cpp)
+    target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2)
+endif()
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 20
@@ -36,3 +41,6 @@ if(WIN32)
 endif()
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+if(NOT WIN32)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
+endif()
