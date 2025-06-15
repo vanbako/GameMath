@@ -13,6 +13,7 @@
 #include <cmath>
 #include <thread>
 
+#ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #define OEMRESOURCE
 
@@ -20,6 +21,7 @@
 #include <dwmapi.h>
 #include <d2d1.h>
 #include <timeapi.h>
+#endif
 
 template<class T>
 void SafeRelease(T** ppT)
