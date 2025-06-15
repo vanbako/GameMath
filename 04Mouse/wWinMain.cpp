@@ -112,17 +112,17 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
                 int dy = event.motion.yrel;
                 if (buttons & SDL_BUTTON(SDL_BUTTON_LEFT))
                 {
-                    translation[0] -= static_cast<float>(dx);
-                    translation[1] += static_cast<float>(dy);
+                    translation[0] += static_cast<float>(dx);
+                    translation[1] -= static_cast<float>(dy);
                 }
                 else if (buttons & SDL_BUTTON(SDL_BUTTON_RIGHT))
                 {
-                    rotation[0] += static_cast<float>(dy) / 180.f;
-                    rotation[1] += static_cast<float>(dx) / 180.f;
+                    rotation[0] -= static_cast<float>(dy) / 180.f;
+                    rotation[1] -= static_cast<float>(dx) / 180.f;
                 }
                 else if (buttons & SDL_BUTTON(SDL_BUTTON_MIDDLE))
                 {
-                    rotation[2] += static_cast<float>(dx) / 180.f;
+                    rotation[2] -= static_cast<float>(dx) / 180.f;
                 }
             }
         }
