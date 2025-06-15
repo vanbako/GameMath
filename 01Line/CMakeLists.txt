@@ -19,7 +19,13 @@ set(HEADER_FILES
     WindowClass.h
 )
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
+if(WIN32)
+    add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
+else()
+    find_package(SDL2 REQUIRED)
+    add_executable(${PROJECT_NAME} wWinMain.cpp ${HEADER_FILES})
+    target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2)
+endif()
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 20
@@ -33,9 +39,14 @@ else()
     target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE UNICODE _UNICODE)
+if(WIN32)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE UNICODE _UNICODE)
+endif()
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+if(NOT WIN32)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
+endif()
 
 if(WIN32)
     target_link_libraries(${PROJECT_NAME}
