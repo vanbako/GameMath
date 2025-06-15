@@ -12,7 +12,7 @@ if(WIN32)
     file(GLOB HEADER_FILES CONFIGURE_DEPENDS
         *.h
     )
-    add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
+    add_executable(${PROJECT_NAME} WIN32 ${SOURCE_FILES} ${HEADER_FILES})
 else()
     find_package(SDL2 REQUIRED)
     add_executable(${PROJECT_NAME} wWinMain.cpp)

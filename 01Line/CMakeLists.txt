@@ -20,7 +20,7 @@ set(HEADER_FILES
 )
 
 if(WIN32)
-    add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
+    add_executable(${PROJECT_NAME} WIN32 ${SOURCE_FILES} ${HEADER_FILES})
 else()
     find_package(SDL2 REQUIRED)
     add_executable(${PROJECT_NAME} wWinMain.cpp ${HEADER_FILES})
