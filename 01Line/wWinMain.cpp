@@ -20,7 +20,7 @@ int APIENTRY wWinMain(_In_ [[maybe_unused]] HINSTANCE hInstance, _In_opt_ [[mayb
 #else
 #include <SDL.h>
 
-int main(int argc, char** argv)
+int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
         if (SDL_Init(SDL_INIT_VIDEO) != 0)
                 return 1;
